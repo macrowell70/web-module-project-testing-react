@@ -7,7 +7,7 @@ import Episode from './../Episode';
 
 const testEpisode = {
     id: 553946,
-    image: '',
+    image: null,
     summary: 'Placeholder summary',
 }
 
@@ -24,4 +24,9 @@ test("renders the summary test passed as prop", () => {
     expect(summary).toBeTruthy()
  });
 
-test("renders default image when image is not defined", () => { });
+test("renders default image when image is not defined", () => {
+    render(<Episode episode={testEpisode} />)
+    const altImg = screen.queryByAltText('https://i.ibb.co/2FsfXqM/stranger-things.png')
+
+    expect(altImg).not.toBeNull()
+ });
